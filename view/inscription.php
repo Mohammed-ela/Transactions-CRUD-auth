@@ -1,28 +1,55 @@
 <?php
-
-$title='Accueil';
-include('../public/header.php');
-
+$title = 'Inscription';
+include('header.php');
+include('../controller/user/Registercontroller.php');
+// si on a une methode post 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    registerUser();
+}
 ?>
 
-<body>
-    <h1>Inscrit toi !</h1>
+<body class="bg-light">
 
-    <form action="" method="post">
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="name" required><br>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Inscription</h2>
+                </div>
+                <div class="card-body">               
+                        <?php
+                        if(isset($_SESSION['error'])){
+                        echo '<div class="alert alert-danger" role="alert">'.$_SESSION['error'].'</div>';
+                        unset($_SESSION['error']);
+                        }
+                        ?>
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nom :</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
 
-        <label for="email">Adresse email :</label>
-        <input type="email" id="email" name="email" required><br>
+                        <div class="form-group">
+                            <label for="email">Adresse email :</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password1" required><br>
+                        <div class="form-group">
+                            <label for="password">Mot de passe :</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
 
-        <!-- <label for="password">Répéter votre Mot de passe :</label>
-        <input type="password" id="password" name="password2" required><br> -->
-
-        <input type="submit" value="S'inscrire">
-    </form>
+                        <div class="d-flex justify-content-around">
+                            <a href="/" class="btn btn-secondary mt-2">Retour à l'accueil</a>
+                            <button type="submit" class="btn btn-primary mt-2">S'enregistré</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

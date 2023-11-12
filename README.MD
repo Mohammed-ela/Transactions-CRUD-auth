@@ -4,17 +4,25 @@
 
 1. [Description](###Description)
 2. [Technologies utilisés](###Technologies)
-3. [Auteurs](###Auteurs)
-4. [Important](###Important)
+3. [Fonctionnalités](###Fonctionnalités)
+4. [Auteurs](###Auteurs)
+5. [Important](###Important)
 
 ### Description
-- Mise en place d'une authentification par session pour accéder à dashboard
+- Ce projet vise à créer un système de gestion de transactions bancaires avec une fonctionnalité d'authentification par session pour accéder au tableau de bord.
 
 ### Technologies
 
     1- PHP
     2- MySQL
-    3- HTML5/CSS/WATER.CSS
+    3- HTML5/CSS3/BS5
+
+### Fonctionnalités
+
+    - Affichage des transactions
+    - Création d'une nouvelle transaction
+    - Modification d'une transaction existante
+    - Suppression d'une transaction
 
 ### Auteurs
 
@@ -22,5 +30,5 @@
 
 ### Important
 
-- Pour bien faire fonctionner oubliez pas de telecharger le fichier .sql pour faire fonctionne avec la bonne BDD
+- Pour faire fonctionner correctement l'application, assurez-vous de télécharger le fichier .sql fourni pour configurer les tables nécessaires.
 
