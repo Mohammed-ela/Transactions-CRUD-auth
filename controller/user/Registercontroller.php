@@ -15,8 +15,21 @@ function registerUser() {
             exit();
         }
 
-        if(strlen($_POST['password'])<'8'){
-            $_SESSION["error"] = "Le mot de passe doit contenir au moin 8 caracteres !";
+        // if(strlen($_POST['password'])<'8'){
+        //     $_SESSION["error"] = "Le mot de passe doit contenir au moin 8 caracteres !";
+        //     header("Location: register");
+        //     exit();
+        // }
+
+        $regexMotDePasse = '/^.{8,}$/';
+
+        if (!preg_match($regexMotDePasse, $_POST['password'])) {
+            $_SESSION["error"] = "Le mot de passe doit contenir au moin 8 caractères !";
+                header("Location: register");
+                exit();
+        }
+        if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            $_SESSION["error"] = "L'e-mail n'est pas valide.";
             header("Location: register");
             exit();
         }
@@ -25,6 +38,17 @@ function registerUser() {
         $name = htmlspecialchars($_POST['name']);
         $email = htmlspecialchars($_POST['email']);
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+
+
+        // on verifie si l'email n'est pas deja prise 
+        $db = connectToDatabase();
+        if (emailExists($db, $email)) {
+            $_SESSION["error"] = "Cet e-mail est déjà enregistré. Veuillez vous connecter.";
+            header("Location: login");
+            exit();
+        }
+
 
         $db = connectToDatabase();
         createUser($db, $name, $email, $password);

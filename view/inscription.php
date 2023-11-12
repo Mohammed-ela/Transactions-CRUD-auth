@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="card-body">               
                         <?php
                         if(isset($_SESSION['error'])){
-                        echo '<div class="alert alert-danger" role="alert">'.$_SESSION['error'].'</div>';
+                        echo '<div class="alert alert-danger text-center" role="alert">'.$_SESSION['error'].'</div>';
                         unset($_SESSION['error']);
                         }
                         ?>

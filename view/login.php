@@ -1,7 +1,14 @@
 <?php
-session_start();
+
 $title = 'Connexion';
 include('header.php');
+
+include('../controller/user/Logincontroller.php');
+// si on a une methode post 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    loginUser();
+}
+
 ?>
 
 <body class="bg-light">
@@ -16,13 +23,19 @@ include('header.php');
                     <div class="card-body">
                                                 <?php
                             if(isset($_SESSION['success'])){
-                            echo '<div class="alert alert-success" role="success">'.$_SESSION['success'].'</div>';
+                            echo '<div class="alert alert-success text-center" role="success">'.$_SESSION['success'].'</div>';
                             unset($_SESSION['success']);
                             }
+                            if(isset($_SESSION['error'])){
+                                echo '<div class="alert alert-danger text-center" role="alert">'.$_SESSION['error'].'</div>';
+                                unset($_SESSION['error']);
+                                }
+
                             ?>
+                    <form action="" method="POST">
                         <div class="mb-3">
-                            <label for="pseudo" class="form-label">Pseudo</label>
-                            <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Votre pseudonyme">
+                            <label for="pseudo" class="form-label">Email</label>
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Votre pseudonyme">
                         </div>
                         <div class="mb-3">
                             <label for="mdp" class="form-label">Mot de passe</label>
@@ -30,8 +43,9 @@ include('header.php');
                         </div>
                         <div class="d-flex justify-content-around">
                             <a href="/" class="btn btn-secondary mt-2">Retour à l'accueil</a>
-                            <button type="button" class="btn btn-primary mt-2">Se connecter</button>
+                            <button type="submit" class="btn btn-primary mt-2">Se connecter</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
