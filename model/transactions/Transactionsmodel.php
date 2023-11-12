@@ -70,3 +70,34 @@ function delete_id($id) {
     $stmt->close();
     $db->close();
 }
+
+// update
+function get_transaction_details($id) {
+    $db = connectToDatabase();
+
+    $query = "SELECT * FROM transactions WHERE id = ?";
+    $statement = $db->prepare($query);
+    $statement->bind_param('i', $id);
+    $statement->execute();
+    $result = $statement->get_result();
+
+    // Récupérer les détails de la transaction
+    $transactionDetails = $result->fetch_assoc();
+
+    $statement->close();
+    $db->close();
+
+    return $transactionDetails;
+}
+
+function update_transaction($id, $updatedLabel, $updatedAmount) {
+    $db = connectToDatabase();
+
+    $query = "UPDATE transactions SET label = ?, amount = ?, updated_at = NOW() WHERE id = ?";
+    $statement = $db->prepare($query);
+    $statement->bind_param('sdi', $updatedLabel, $updatedAmount, $id);
+    $statement->execute();
+
+    $statement->close();
+    $db->close();
+}

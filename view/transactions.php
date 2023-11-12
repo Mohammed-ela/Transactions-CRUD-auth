@@ -74,7 +74,7 @@ include('header.php');
                         <tr>
                             <td scope="row"><?= $transaction["id"] ?></td>
                             <td><?= $transaction["label"] ?></td>
-                            <td><?= $transaction["amount"] ?></td>
+                            <td><?= $transaction["amount"] ?>$</td>
                             <td><?= $transaction["created_at"] ?></td>
                             <td><?= $transaction["updated_at"] ?></td>
                             <td class="d-flex justify-content-around">

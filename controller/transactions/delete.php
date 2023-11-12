@@ -10,7 +10,6 @@ if (empty($_GET['id'])) {
 $id = $_GET['id'];
 // Vérifiez si l'id est un nombre
 if (!ctype_digit($id)) {
-
     $_SESSION["error"] = "Impossible de supprimer.".$_GET['id'];
     header("Location: transactions");
     exit();

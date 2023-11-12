@@ -47,6 +47,9 @@ switch ($request_uri) {
     case 'transactions/delete':
         loadCont('transactions/delete');
         break;
+    case 'transactions/edit':
+        loadCont('transactions/modifier');
+        break;
     
         
 
