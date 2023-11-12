@@ -33,13 +33,22 @@ switch ($request_uri) {
     case 'transactions':
         loadView('transactions');
         break;
+    case 'transactions/transactions':
+        loadView('transactions');
+        break;
+
+       
     case 'logout':
         loadCont('user/logout');
         break;
     case 'transactions/create':
-        loadView('transactions');
+        loadView('transactions-register');
         break;
-
+    case 'transactions/delete':
+        loadCont('transactions/delete');
+        break;
+    
+        
 
 
 

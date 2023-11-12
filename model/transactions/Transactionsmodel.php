@@ -44,8 +44,29 @@ function connectToDatabase() {
 //Create
 
 function createTransactions($db,$user_id,$libelle,$amount) {
-    $stmt = $db->prepare("INSERT INTO users (`user_id`,`label`, `amount`) VALUES (?, ?, ?)");
+    $stmt = $db->prepare("INSERT INTO transactions (`user_id`,`label`, `amount`) VALUES (?, ?, ?)");
     $stmt->bind_param("sss",$user_id,$libelle,$amount);
     $stmt->execute();
     $stmt->close();
+}
+
+function list_transaction_id(){
+    $db=connectToDatabase();
+    $user_id = $_SESSION['id'];
+    $query = "SELECT * FROM transactions WHERE user_id = ?";
+    $statement = $db->prepare($query);
+    $statement->bind_param('i', $user_id);
+    $statement->execute();
+    $result = $statement->get_result();
+    $transactions = $result->fetch_all(MYSQLI_ASSOC);
+    return $transactions;
+}
+
+function delete_id($id) {
+    $db = connectToDatabase();
+    $stmt = $db->prepare("DELETE FROM `transactions` WHERE `id` = ?");
+    $stmt->bind_param("s", $id);
+    $stmt->execute();
+    $stmt->close();
+    $db->close();
 }

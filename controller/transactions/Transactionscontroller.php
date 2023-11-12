@@ -20,12 +20,15 @@ function registerTransactions() {
            exit();
        }
 
-
-
        $libelle = htmlspecialchars($_POST['libelle']);
-       $montant = htmlspecialchars($_POST['montant']);
-
-
+       $amount = htmlspecialchars($_POST['montant']);
+       $user_id = $_SESSION['id'];
+       $db = connectToDatabase();
+      
+       createTransactions($db,$user_id,$libelle,$amount);
+       $_SESSION["success"] = "Transaction effectué !";
+        header("Location: transactions ");
+        exit();
     }
 }
 ?>

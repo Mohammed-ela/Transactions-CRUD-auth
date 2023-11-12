@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erreur 404 - Page non trouvée</title>
+<?php
+$title = 'Erreur 404 - Page non trouvée';
+include('header.php');
+?>
+
     <style>
         body {
             text-align: center;
@@ -35,9 +34,10 @@
             margin-top: 20px;
         }
     </style>
-</head>
+
 <body>
     <h1>Erreur 404 - Page non trouvée</h1>
     <p>Désolé, la page que vous recherchez semble introuvable.</p>
+    <a href="/" class="btn btn-secondary mt-2">Retour à l'accueil</a>
 </body>
 </html>

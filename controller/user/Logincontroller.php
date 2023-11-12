@@ -25,6 +25,7 @@ function loginUser() {
             $_SESSION["connect"]  = true;
             $_SESSION["id"]       = $user['id'];
             $_SESSION["name"]       = $user['name'];
+            $_SESSION["email"]       = $user['email'];
             $_SESSION["created_at"]     = $user['created_at'];
             $_SESSION["updated_at"]     = $user['updated_at'];
             header("Location: transactions");
