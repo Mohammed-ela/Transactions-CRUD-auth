@@ -9,6 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     loginUser();
 }
 
+if (!$_SESSION["connect"]=true) {
+    header("Location: ");
+    exit();
+}
+
 ?>
 
 <body class="bg-light">

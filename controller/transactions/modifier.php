@@ -15,6 +15,12 @@ if (isset($_GET['id'])) {
         header("Location: /transactions");
         exit();
     }
+
+    if ($_SESSION['id'] != $transactionDetails['user_id']) {
+        $_SESSION["error"] = "Vous n'êtes pas autorisé à modifier cette transaction.";
+        header("Location: /transactions");
+        exit();
+    }
 } else {
     // Gérer le cas où l'id n'est pas fourni dans l'URL
     $_SESSION["error"] = "Transaction inconnu";

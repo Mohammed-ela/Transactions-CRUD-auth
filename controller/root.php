@@ -41,6 +41,10 @@ switch ($request_uri) {
     case 'logout':
         loadCont('user/logout');
         break;
+    case 'transactions/logout':
+        loadCont('user/logout');
+        break;
+        
     case 'transactions/create':
         loadView('transactions-register');
         break;
